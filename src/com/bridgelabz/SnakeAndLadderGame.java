@@ -1,15 +1,16 @@
 package com.bridgelabz;
 
 public class SnakeAndLadderGame {
-    public static void playerOne(){
+    public static int playerOne(){
         int playerPosition = 1;
         int sumOfRollDie=0;
 
 
 
         while (playerPosition <=100) {
+
             int randomDice = (int) ((Math.random() * 10) % 6 + 1);
-            sumOfRollDie += playerPosition;
+
 
             if (sumOfRollDie==20 || sumOfRollDie==35 || sumOfRollDie==50 || sumOfRollDie==65 || sumOfRollDie==80 ){
                 sumOfRollDie-=15;
@@ -21,13 +22,19 @@ public class SnakeAndLadderGame {
             if (sumOfRollDie >=100){
                 break;
             }
-            System.out.println("Player number of roll die - "+playerPosition+" and position - "+sumOfRollDie);
             playerPosition++;
+
+
+            sumOfRollDie += randomDice;
+            System.out.println("Player number of roll die - "+playerPosition+" and position - "+sumOfRollDie);
+
         }
+        return playerPosition;
 
     }
 
     public static void main(String[] args) {
-        playerOne();
+        int playerOne = playerOne();
+        System.out.println("Player won at the position : "+playerOne);
     }
 }
