@@ -30,17 +30,17 @@ public class SnakeAndLadderGame {
             System.out.println("Player number of roll die - "+playerPosition+" and position - "+sumOfRollDie);
 
         }
-        int cont =0;
+
         int dif = 100-sumOfRollDie;
         while (playerPosition <=100){
             int randomDice = (int) ((Math.random() * 10) % 6 + 1);
-            if (cont == dif){
+            if (randomDice == dif){
                 break;
             }
-            cont++;
+
             playerPosition++;
         }
-        int totalSumOfRollDies = cont+sumOfRollDie;
+        int totalSumOfRollDies = dif+sumOfRollDie;
         System.out.println("Player number of roll die - "+playerPosition+" and position - "+totalSumOfRollDies);
 
 
@@ -49,7 +49,8 @@ public class SnakeAndLadderGame {
     }
 
     public static void main(String[] args) {
+        System.out.println("Player report  number of dices played");
         int playerOne = playerOne();
-        System.out.println("Player won at the number of roll dies : "+playerOne);
+        System.out.println("Player played number of roll dices : "+playerOne);
     }
 }
