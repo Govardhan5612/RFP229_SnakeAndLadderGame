@@ -1,37 +1,43 @@
 package com.bridgelabz;
 
+/**
+ * @GovardhanReddy
+ */
 public class SnakeAndLadderGame {
+    /**
+     * @return
+     * calculate and snake and ladder game use Math class
+     */
     public static int playerOne(){
+        /**
+         * playerOne method to play game use Math class random static method
+         * find random values to return number of times roll dice
+         */
         int playerPosition = 1;
-        int sumOfRollDie=0;
-
-
+        int sumOfRollDice=0;
 
         while (playerPosition <=100) {
 
             int randomDice = (int) ((Math.random() * 10) % 6 + 1);
-
-                //snake
-            if (sumOfRollDie==20 || sumOfRollDie==35 || sumOfRollDie==50 || sumOfRollDie==65 || sumOfRollDie==80 ){
-                sumOfRollDie-=15;
+            //snake
+            if (sumOfRollDice==20 || sumOfRollDice==35 || sumOfRollDice==50 || sumOfRollDice==65 || sumOfRollDice==80 ){
+                sumOfRollDice-=15;
             }
             //ladder
-            if (sumOfRollDie==15 || sumOfRollDie==30 || sumOfRollDie==45 || sumOfRollDie==60 || sumOfRollDie==75 ){
-                sumOfRollDie+=15;
+            if (sumOfRollDice==15 || sumOfRollDice==30 || sumOfRollDice==45 || sumOfRollDice==60 || sumOfRollDice==75 ){
+                sumOfRollDice+=15;
             }
-
-            if (sumOfRollDie >=94){
+            if (sumOfRollDice >=94){
                 break;
             }
+
+
+            sumOfRollDice += randomDice;
+            System.out.println("Player number of roll die - "+playerPosition+" and position - "+sumOfRollDice);
             playerPosition++;
-
-
-            sumOfRollDie += randomDice;
-            System.out.println("Player number of roll die - "+playerPosition+" and position - "+sumOfRollDie);
-
         }
-
-        int dif = 100-sumOfRollDie;
+        playerPosition+=1;
+        int dif = 100-sumOfRollDice;
         while (playerPosition <=100){
             int randomDice = (int) ((Math.random() * 10) % 6 + 1);
             if (randomDice == dif){
@@ -40,17 +46,29 @@ public class SnakeAndLadderGame {
 
             playerPosition++;
         }
-        int totalSumOfRollDies = dif+sumOfRollDie;
+
+        int totalSumOfRollDies = dif+sumOfRollDice;
         System.out.println("Player number of roll die - "+playerPosition+" and position - "+totalSumOfRollDies);
 
-
         return playerPosition;
-
     }
 
+
     public static void main(String[] args) {
-        System.out.println("Player report  number of dices played");
+        System.out.println("First player report  number of dices played");
         int playerOne = playerOne();
-        System.out.println("Player played number of roll dices : "+playerOne);
+        System.out.println("Second Player report  number of dices played");
+        int playerTwo = playerOne();
+        System.out.println("***************************************************");
+        System.out.println("First Player played number of roll dices : "+playerOne);
+        System.out.println("Second Player played number of roll dices : "+playerTwo);
+        System.out.println("***************************************************");
+
+        if (playerOne>playerTwo){
+            System.out.println("Second player won the game");
+        }
+        else {
+            System.out.println("First player won the game ");
+        }
     }
 }
